@@ -2,6 +2,9 @@ package main
 
 import (
 	"log"
+
+	"github.com/RajaPremSai/terraform-ai-go/cmd/cli"
+	"github.com/RajaPremSai/terraform-ai-go/pkg/utils"
 )
 
 func main() {
