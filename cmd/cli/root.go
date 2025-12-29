@@ -3,7 +3,9 @@ package cli
 import (
 	"flag"
 	"log"
+	"strconv"
 
+	terraform "github.com/RajaPremSai/terraform-ai-go/pkg/terraform"
 	"github.com/spf13/cobra"
 	"github.com/walles/env"
 )
@@ -17,6 +19,7 @@ var (
 	openAIPIKey          = flag.String("openai-api-key", env.GetOr("OPENAI_API_KEY", env.String, ""), "It is API Key from Open AI - REQUIRED")
 	workingDir           = flag.String("working-dir", env.GetOr("WORKING_DIR", env.String, ""), "The path where the project we want to run")
 	execDir              = flag.String("exe-dir", env.GetOr("EXEC_DIR", env.String, ""), "The path of terraform")
+	requireConfirmation  = flag.Bool("required-confirmation", env.GetOr("REQUIRED_CONFIRMATION", strconv.ParseBool, true), "whether to reuire confirmation before executing the command.Defaults to true")
 )
 
 func InitAndExecute(workDir string, executionDir string) {
