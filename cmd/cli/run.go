@@ -7,6 +7,8 @@ import (
 	"os"
 	"os/signal"
 
+	terraform "github.com/RajaPremSai/terraform-ai-go/pkg/terraform"
+	"github.com/RajaPremSai/terraform-ai-go/pkg/utils"
 	"github.com/go-errors/errors"
 	"github.com/spf13/cobra"
 )

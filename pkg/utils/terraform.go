@@ -20,7 +20,7 @@ func RandomName() string {
 		panic(err)
 	}
 	randomString := base64.RawURLEncoding.EncodeToString(randomBytes)
-	return fmt.Sprintf("", randomString)
+	return fmt.Sprintf("terraform-%s.tf", randomString)
 }
 
 func GetName(name string) string {
