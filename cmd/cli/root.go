@@ -20,6 +20,9 @@ var (
 	workingDir           = flag.String("working-dir", env.GetOr("WORKING_DIR", env.String, ""), "The path where the project we want to run")
 	execDir              = flag.String("exe-dir", env.GetOr("EXEC_DIR", env.String, ""), "The path of terraform")
 	requireConfirmation  = flag.Bool("required-confirmation", env.GetOr("REQUIRED_CONFIRMATION", strconv.ParseBool, true), "whether to reuire confirmation before executing the command.Defaults to true")
+	azureOpenAIEndpoint  = flag.String("azure-openai-endpoint", env.GetOr("AZURE_OPENAI_ENDPOINT", env.String, ""), "The endpoint for azure openai service.If provided, Azure OpenAI service will be used instead of OpenAI service.")
+	ops                  terraform.Ops
+	err                  error
 )
 
 func InitAndExecute(workDir string, executionDir string) {
