@@ -23,6 +23,7 @@ var (
 	azureOpenAIEndpoint  = flag.String("azure-openai-endpoint", env.GetOr("AZURE_OPENAI_ENDPOINT", env.String, ""), "The endpoint for azure openai service.If provided, Azure OpenAI service will be used instead of OpenAI service.")
 	ops                  terraform.Ops
 	err                  error
+	temperature =flag.Float64("temperature",env.GetOr("TEMPERATURE",env.WithBitSize(strconv.ParseFloat,64)),0.0),"The temperature to use for the model.")
 )
 
 func InitAndExecute(workDir string, executionDir string) {
