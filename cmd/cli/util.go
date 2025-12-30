@@ -22,12 +22,12 @@ func userActionPrompt() (string, error) {
 		return apply, nil
 	}
 
-	items := []string(apply, dontApply)
+	items := []string{apply, dontApply}
 	label := fmt.Sprintf("would you to apply this ?[%s/%s/%s]", reprompt, items[0], items[1])
 	prompt := promptui.SelectWithAdd{
 		Label:    label,
 		Items:    items,
-		Addlabel: reprompt,
+		AddLabel: reprompt,
 	}
 	_, result, err = prompt.Run()
 	if err != nil {
