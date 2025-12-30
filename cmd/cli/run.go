@@ -14,8 +14,8 @@ import (
 )
 
 const (
-	nameSubCommand = ""
-	runSubCommand  = ""
+	nameSubCommand = "You are a file name generator, only generate valid name for Terraform templates."
+	runSubCommand  = "You are a Terraform HCL generator, only generate valid Terraform HCL without provider templates."
 )
 
 func runCommand(_ *cobra.Command, args []string) error {

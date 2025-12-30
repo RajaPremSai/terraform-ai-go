@@ -13,6 +13,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
+const initSubCommand = "You are a Terraform HCL generator, only generate valid provider Terraform HCL templates."
+
+var errLength = errors.New("invalid length")
+
 func addInit() *cobra.Command {
 	initCmd := &cobra.Command{
 		Use:   "init",
