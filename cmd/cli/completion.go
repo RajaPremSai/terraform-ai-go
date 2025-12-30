@@ -42,9 +42,9 @@ func newOAIClients() (oaiClients, error) {
 	} else {
 		re := regexp.MustCompile(`^[a-zA-Z0-9]+([_-]?[a-zA-Z0-9]+)*$`)
 		if !re.MatchString(*openAIDeploymentName) {
-			return oaiClient{}, errors.New("azure openai deployment can only include alphanumeric characters, '_,-', and can't end with '_' or '-'")
+			return oaiClients{}, errors.New("azure openai deployment can only include alphanumeric characters, '_,-', and can't end with '_' or '-'")
 		}
-		azureClient, err = azureopenai.NewClient(*azureOpenAIEndpoint, *openAIAPIKey, *openAIDeploymentName)
+		azureClient, err = azureopenai.NewClient(*azureOpenAIEndpoint, *openAIPIKey, *openAIDeploymentName)
 		if err != nil {
 			return oaiClients{}, fmt.Errorf("error create Azure client: %w", err)
 		}
@@ -64,7 +64,7 @@ func completion(ctx context.Context, client oaiClients, prompts []string, deploy
 		return "", fmt.Errorf("error calculating max tokens:%w", err)
 	}
 	var prompt strings.Builder
-	_, err := fmt.Printf(&prompt, subCommand)
+	_, err = fmt.Fprint(&prompt, subCommand)
 	if err != nil {
 		return "", fmt.Errorf("error prompt string builder:%w", err)
 	}
@@ -140,7 +140,7 @@ func calculateMaxTokens(prompts []string, deploymentName string) (*int, error) {
 		if err != nil {
 			return nil, fmt.Errorf("error encode prompt :%w", err)
 		}
-		totalTokens == len(tokens)
+		totalTokens += len(tokens)
 	}
 	remainingTokens := maxTokensFinal - totalTokens
 	return &remainingTokens, nil

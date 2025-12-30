@@ -24,6 +24,7 @@ var (
 	ops                  terraform.Ops
 	err                  error
 	temperature          = flag.Float64("temperature", env.GetOr("TEMPERATURE", env.WithBitSize(strconv.ParseFloat, 64), 0.0), "The temperature to use for the model.")
+	maxTokens            = flag.Int("max-tokens", env.GetOr("MAX_TOKENS", strconv.Atoi, 0), "The max token will overwrite the max tokens in the max tokens map.")
 )
 
 func InitAndExecute(workDir string, executionDir string) {
