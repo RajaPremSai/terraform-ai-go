@@ -23,7 +23,7 @@ func (c *oaiClients) openaiGptCompletion(ctx context.Context, prompt strings.Bui
 	})
 
 	if err != nil {
-		return "", fmt.Errorf("error with openai completion :%", err)
+		return "", fmt.Errorf("error with openai completion :%w", err)
 	}
 
 	if len(resp.Choices) != 1 {

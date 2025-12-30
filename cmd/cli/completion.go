@@ -86,9 +86,9 @@ func completion(ctx context.Context, client oaiClients, prompts []string, deploy
 			return resp, nil
 		}
 
-		resp, err := client.openaiGptChatCompletion(ctx, prompt, maxTokens, temp)
+		resp, err := client.openaiGptCompletion(ctx, prompt, maxTokens, temp)
 		if err != nil {
-			return "", fmt.Errorf("error openai Gpt completion: %w", &err)
+			return "", fmt.Errorf("error openai Gpt completion: %w", err)
 		}
 		return resp, nil
 	}
