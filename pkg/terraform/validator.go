@@ -6,9 +6,11 @@ import (
 	"github.com/pkg/errors"
 )
 
+var errTemplate = errors.New("invalid terraform template")
+
 func CheckTemplate(completion string) error {
 	template := []byte(completion)
-	_, parseDiags := hclsyntax.ParseConfig(template, "", hcl.Poas{Line: 2, Column: 1})
+	_, parseDiags := hclsyntax.ParseConfig(template, "", hcl.Pos{Line: 2, Column: 1})
 	if len(parseDiags) != 0 {
 		return errors.Wrapf(errTemplate, "expected valid template but:%s", completion)
 	}
