@@ -5,7 +5,6 @@ go 1.23.2
 require (
 	github.com/PullRequestInc/go-gpt3 v1.2.0
 	github.com/briandowns/spinner v1.23.2
-	github.com/go-errors/errors v1.5.1
 	github.com/hashicorp/hcl/v2 v2.24.0
 	github.com/hashicorp/terraform-exec v0.24.0
 	github.com/manifoldco/promptui v0.9.0
