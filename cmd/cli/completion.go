@@ -100,8 +100,7 @@ func completion(ctx context.Context, client oaiClients, prompts []string, deploy
 		}
 		return resp, nil
 	}
-
-	resp, err := azureGptChatCompletion(ctx, prompt, maxTokens, temp)
+	resp, err := client.azureGptCompletion(ctx, prompt, maxTokens, temp)
 	if err != nil {
 		return "", fmt.Errorf("error azure Gpt completion: %w", err)
 	}

@@ -77,7 +77,7 @@ func (c *oaiClients) azureGptCompletion(ctx context.Context, prompt strings.Buil
 	return resp.Choices[0].Text, nil
 }
 
-func (c *oaiClients) azureChatGptCompletion(ctx context.Context, prompt strings.Builder, maxTokens *int, temp float32) (string, error) {
+func (c *oaiClients) azureGptChatCompletion(ctx context.Context, prompt strings.Builder, maxTokens *int, temp float32) (string, error) {
 	resp, err := c.azureClient.ChatCompletion(ctx, azureopenai.ChatCompletionRequest{
 		Model: *openAIDeploymentName,
 		Messages: []azureopenai.ChatCompletionRequestMessage{
